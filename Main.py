@@ -69,28 +69,39 @@ GB.fit(xv_train, y_train)
 predict_gb = GB.predict(xv_test)
 GB.score(xv_test, y_test)
 print(classification_report(y_test, predict_gb))
+from sklearn.tree import DecisionTreeClassifier
+DT = DecisionTreeClassifier(random_state=0)
+DT.fit(xv_train, y_train)
+pred_dt = DT.predict(xv_test)
+print("Decision Tree Accuracy:", accuracy_score(y_test, pred_dt))
+print(classification_report(y_test, pred_dt))
 from sklearn.ensemble import RandomForestClassifier
 RF = RandomForestClassifier(random_state = 0)
 RF.fit(xv_train, y_train)
 pred_rf = RF.predict(xv_test)
 print(classification_report(y_test, pred_rf))
+
 def output_label(n):
     if n == 0:
         return "Fake News"
     elif n == 1:
-        return "Not A Fake News"
-    
-    
+        return "Real News"
+
+
 def manual_testing(news):
-    testing_news = {"text":[news]}
+    testing_news = {"text": [news]}
     new_def_test = pd.DataFrame(testing_news)
+
     new_def_test["text"] = new_def_test["text"].apply(wordopt)
-    new_x_test = new_def_test["text"]
-    new_xv_test = vec.transform(new_x_test)
-    pred_LR = LR.predict(new_xv_test) 
-    pred_DT = DT.predict(new_xv_test) 
-    pred_GB = GB.predict(new_xv_test) 
+
+    new_xv_test = vec.transform(new_def_test["text"])
+
+    pred_LR = LR.predict(new_xv_test)
+    pred_DT = DT.predict(new_xv_test)
+    pred_GB = GB.predict(new_xv_test)
     pred_RF = RF.predict(new_xv_test)
-    return print("\n\nLR Prediction:{}  \nDT Prediction:{} \nGBC Prediction:{} \nRFC Prediction:{}" .format(output_lable(pred_LR[0]),output_lable(pred_DT[0]), output_lable(pred_GB[0]),output_lable(pred_RF[0]),))
-news = str(input())
-manual_testing(news)
+
+    print("\nLogistic Regression:", output_label(pred_LR[0]))
+    print("Decision Tree:", output_label(pred_DT[0]))
+    print("Gradient Boosting:", output_label(pred_GB[0]))
+    print("Random Forest:", output_label(pred_RF[0]))
