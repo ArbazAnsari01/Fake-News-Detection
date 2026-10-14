@@ -7,8 +7,8 @@ from sklearn.metrics import accuracy_score
 from sklearn.metrics import classification_report
 import re
 import string
-data_fake = pd.read_csv(r"C:\Users\arbaz\Downloads\Fake.csv")
-data_true = pd.read_csv(r"C:\Users\arbaz\Downloads\True.csv")
+data_fake = pd.read_csv("Fake.csv")
+data_true = pd.read_csv("True.csv")
 # shape method gives us size of array in matrix form data in rows columns i quantity
 data_fake.shape, data_true.shape
 # Remove last 10 rows of data for manual testing...
