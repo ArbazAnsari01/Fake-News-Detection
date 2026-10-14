@@ -43,16 +43,24 @@ The models predict whether the supplied news article is fake or real.
 
 ## Dataset
 
-The project uses two CSV datasets:
+This project uses the Fake and Real News Dataset from Kaggle.
 
-- `Fake.csv` - Fake news articles
-- `True.csv` - Real news articles
+**Dataset Link:** [Download the dataset from Kaggle](https://www.kaggle.com/datasets/clmentbisaillon/fake-and-real-news-dataset)
 
-The datasets should be placed in the project directory before running
-the notebook.
+The dataset contains two CSV files:
 
-**Note:** The datasets are not currently included in this repository.
-You must obtain them separately and update the file paths if necessary.
+- `Fake.csv` — Fake news articles
+- `True.csv` — Real news articles
+
+### Dataset Setup
+
+1. Open the Kaggle dataset link above.
+2. Sign in to Kaggle if required.
+3. Download the dataset.
+4. Extract the downloaded files.
+5. Place `Fake.csv` and `True.csv` in the project directory.
+
+**Note:** The dataset files are not stored in this GitHub repository because they exceed GitHub's browser upload limit.
 
 ## Installation
 
