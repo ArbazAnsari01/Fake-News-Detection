@@ -40,13 +40,13 @@ data.columns
 data.head()
 def wordopt(text):
     text = text.lower()
-    text = re.sub('\[.*?\]', '', text)
-    text = re.sub("\\W", " ", text)
-    text = re.sub('http?://\S+|www\.\S+', '', text)
-    text = re.sub('<.*?>+', '', text)
-    text = re.sub('[%s]' % re.escape(string.punctuation), '', text)
-    text = re.sub('\n', '', text)
-    text = re.sub('\w*\d\w*', '', text)
+    text = re.sub(r'\[.*?\]', '', text)
+    text = re.sub(r'\W', ' ', text)
+    text = re.sub(r'https?://\S+|www\.\S+', '', text)
+    text = re.sub(r'<.*?>+', '', text)
+    text = re.sub(r'[%s]' % re.escape(string.punctuation), '', text)
+    text = re.sub(r'\n', '', text)
+    text = re.sub(r'\w*\d\w*', '', text)
     return text
 data['text'] = data['text'].apply(wordopt)
 x = data['text']
@@ -105,3 +105,6 @@ def manual_testing(news):
     print("Decision Tree:", output_label(pred_DT[0]))
     print("Gradient Boosting:", output_label(pred_GB[0]))
     print("Random Forest:", output_label(pred_RF[0]))
+
+news=input("Enter a news article")
+manual_testing(news)
